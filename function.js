@@ -1,24 +1,32 @@
-let domTimer = document.querySelector(".timer");
+let domHour = document.querySelector("#hour");
+let domMinute = document.querySelector("#minute");
+let domSecond = document.querySelector("#second");
 let startBtn = document.querySelector(".start");
 let stopBtn = document.querySelector(".stop");
 
 let counting = false;
 let interval;
-let target;
-let timer;
+
 
 let startTimer = startBtn.addEventListener("click", () => {
   if (!counting) {
-    target = new Date().getTime() + (1000 * parseTime(domTimer.textContent));
-    target = Math.round(target)
-    timer = domTimer.textContent = parseSecond((target - new Date().getTime())/1000)
     counting = true;
 
-    interval = setInterval(function() {  
-      timer = Math.round(timer - 1000)
-      timer = domTimer.textContent = parseSecond((target - new Date().getTime())/1000)
+    let hour = (parseInt(domHour.value) > 0) ? parseInt(domHour.value) : 0;
+    let minute = (parseInt(domMinute.value) > 0 ) ? parseInt(domMinute.value) : 0;
+    let second = (parseInt(domSecond.value) > 0) ? parseInt(domSecond.value) : 0;
 
-      if (timer <= 0) {
+    target = new Date(0, 0, 0, hour, minute, second)
+
+    interval = setInterval(function() {  
+      target.setSeconds(target.getSeconds() - 1);
+
+      domHour.value = doubledigits(target.getHours());
+      domMinute.value = doubledigits(target.getMinutes());
+      domSecond.value = doubledigits(target.getSeconds());
+
+      let sum = target.getHours() + target.getMinutes() + target.getSeconds();
+      if (sum <= 0) {
         clearInterval(interval);
         counting = false;
       }
@@ -31,35 +39,8 @@ stopBtn.addEventListener("click", () => {
   clearInterval(interval)
 });
 
-// Takes in a time string ("HH:MM:SS")
-// return integer representing seconds
-function parseTime(timeString) {
-  timeArray = timeString.split(":", 3)
-
-  bill = timeArray.every((value) => {
-    return parseInt(value) > 60
-  })
-  if (bill) return "HH:MM:SS";
-
-  seconds = 0;
-  
-  seconds += parseInt(timeArray[2]);
-  seconds += parseInt(timeArray[1]) * 60;
-  seconds += parseInt(timeArray[0]) * 3600;
-  return seconds;
-}
-
-// Takes in seconds
-// return a string (HH:MM:SS)
-function parseSecond(secondsInt) {
-  let seconds = Math.floor(secondsInt % 60);
-  let minutes = Math.floor(secondsInt / 60);
-  let hours = Math.floor(minutes / 60);
-  if (seconds % 60 == 0) {
-    minutes = (minutes % 60) - 1
-  } else {
-    minutes = minutes % 60;
-  }
-
-  return `${hours}:${minutes}:${seconds}`;
+// Takes in a single digit number
+// returns string that is double digit of number (09, 02, 04)
+function doubledigits(number) {
+  return ("0" + number).slice(-2)
 }

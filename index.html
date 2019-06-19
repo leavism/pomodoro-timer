@@ -6,8 +6,13 @@
     href = "style.css" />
   </head>
   <body>
-    <div class="timer" contenteditable="true">HH:MM:SS</div>
-    seconds
+    <div class = "timer">
+        <input type="number" min = 0 id="hour" placeholder="HH"></input>
+        :
+        <input type="number" id="minute" placeholder="MM"></input>
+        :
+        <input type="number" id="second" placeholder = "SS"></input>
+    </div>
     <button class="start">Start</button>
     <button class="stop">Stop</button>
     <script src="function.js"></script>
