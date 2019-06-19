@@ -6,15 +6,26 @@
     href = "style.css" />
   </head>
   <body>
-    <div class = "timer">
-        <input type="number" min = 0 id="hour" placeholder="HH"></input>
+    <h2>Work Timer</h2>
+    <div class = "work-timer">
+        <input type="number" min = 0 id="work-hour" placeholder="HH"></input>
         :
-        <input type="number" id="minute" placeholder="MM"></input>
+        <input type="number" id="work-minute" placeholder="MM"></input>
         :
-        <input type="number" id="second" placeholder = "SS"></input>
+        <input type="number" id="work-second" placeholder = "SS"></input>
+        <button class="work-start">Start</button>
+        <button class="work-stop">Stop</button>    
     </div>
-    <button class="start">Start</button>
-    <button class="stop">Stop</button>
+    <h2>Break Timer</h2>
+    <div class = "break-timer">
+      <input type="number" min = 0 id="break-hour" placeholder="HH"></input>
+      :
+      <input type="number" id="break-minute" placeholder="MM"></input>
+      :
+      <input type="number" id="break-second" placeholder = "SS"></input>
+      <button class="break-start">Start</button>
+      <button class="break-stop">Stop</button>    
+    </div>
     <script src="function.js"></script>
   </body>
 </html>
