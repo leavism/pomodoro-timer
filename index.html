@@ -8,24 +8,26 @@
   <body>
     <h2>Work Timer</h2>
     <div class = "work-timer">
-        <input type="number" min = 0 id="work-hour" placeholder="HH"></input>
-        :
-        <input type="number" id="work-minute" placeholder="MM"></input>
-        :
-        <input type="number" id="work-second" placeholder = "SS"></input>
-        <button class="work-start">Start</button>
-        <button class="work-stop">Stop</button>    
+      <button class="new-session">New Session</button>
+      <input type="number" min = 0 id="work-hour" placeholder="HH"></input>
+      :
+      <input type="number" id="work-minute" placeholder="MM"></input>
+      :
+      <input type="number" id="work-second" placeholder = "SS"></input>
+      <button class="work-start">Start</button>
+      <button class="work-stop">Pause</button>    
     </div>
     <h2>Break Timer</h2>
     <div class = "break-timer">
+      <button class="new-break">New Break</button>
       <input type="number" min = 0 id="break-hour" placeholder="HH"></input>
       :
       <input type="number" id="break-minute" placeholder="MM"></input>
       :
       <input type="number" id="break-second" placeholder = "SS"></input>
       <button class="break-start">Start</button>
-      <button class="break-stop">Stop</button>    
+      <button class="break-stop">Pause</button>    
     </div>
-    <script src="function.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
